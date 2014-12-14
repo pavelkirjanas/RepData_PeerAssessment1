@@ -52,7 +52,7 @@ You can see a histogram on the total number of steps taken each day
 
 
 ```r
-hist(sumSteps)
+hist(sumSteps, main = "Histogram of the total number of steps taken each day")
 ```
 
 ![plot of chunk total.steps.per.day](figure/total.steps.per.day-1.png) 
@@ -66,7 +66,7 @@ Let's make a time series plot of the 5-minute interval (x-axis) and the average 
 
 ```r
 meanStepsInterval <- tapply(data$steps, data$interval, mean, na.rm=TRUE)
-plot(meanStepsInterval, type="l")
+plot(meanStepsInterval, type="l", main="Time series plot of the average number of steps")
 ```
 
 ![plot of chunk daily.activity](figure/daily.activity-1.png) 
@@ -106,7 +106,7 @@ You can see the histagram of the total number of steps taken each day with the f
 
 ```r
 sumSteps2 <- tapply(data2$steps, data2$date, sum)
-hist(sumSteps2)
+hist(sumSteps2, main="Histogram after missing values were imputed")
 ```
 
 ![plot of chunk total.steps.per.day.filled](figure/total.steps.per.day.filled-1.png) 
@@ -143,7 +143,7 @@ Here is a panel plot containing a time series plot of the 5-minute interval (x-a
 
 
 ```r
-xyplot(steps ~ interval | day.type, data=data2, type="l", layout=c(1,2))
+xyplot(steps ~ interval | day.type, data=data2, type="l", layout=c(1,2), main="Panel plot of the avg. number of steps across weekdays and weekends")
 ```
 
 ![plot of chunk weekend.weekday](figure/weekend.weekday-1.png) 

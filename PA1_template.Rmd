@@ -40,7 +40,7 @@ medianSteps <- median(sumSteps)
 You can see a histogram on the total number of steps taken each day
 
 ```{r total.steps.per.day}
-hist(sumSteps)
+hist(sumSteps, main = "Histogram of the total number of steps taken each day")
 ```
 
 The mean total number of steps taken per day is `r meanSteps` and the median total number of steps is `r medianSteps`.
@@ -51,7 +51,7 @@ Let's make a time series plot of the 5-minute interval (x-axis) and the average 
 
 ```{r daily.activity}
 meanStepsInterval <- tapply(data$steps, data$interval, mean, na.rm=TRUE)
-plot(meanStepsInterval, type="l")
+plot(meanStepsInterval, type="l", main="Time series plot of the average number of steps")
 maxStepsInt <- which(meanStepsInterval==max(meanStepsInterval))
 ```
 
@@ -83,7 +83,7 @@ You can see the histagram of the total number of steps taken each day with the f
 
 ```{r total.steps.per.day.filled}
 sumSteps2 <- tapply(data2$steps, data2$date, sum)
-hist(sumSteps2)
+hist(sumSteps2, main="Histogram after missing values were imputed")
 meanSteps2 <- mean(sumSteps2)
 medianSteps2 <- median(sumSteps2)
 ```
@@ -113,5 +113,5 @@ data2 <- cbind(data2, day.type)
 Here is a panel plot containing a time series plot of the 5-minute interval (x-axis) and the average number of steps taken, averaged across all weekday days or weekend days (y-axis)
 
 ``` {r weekend.weekday}
-xyplot(steps ~ interval | day.type, data=data2, type="l", layout=c(1,2))
+xyplot(steps ~ interval | day.type, data=data2, type="l", layout=c(1,2), main="Panel plot of the avg. number of steps across weekdays and weekends")
 ```
